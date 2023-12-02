@@ -1,12 +1,14 @@
+<!-- urls_index.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Bootstrap CSS and other headers -->
   </head>
   <body>
-    <!-- Header partial inclusion -->
+    <!-- Include your header partial here -->
     <% include('./partials/_header') %>
-    <!-- Content specific to urls_index.ejs -->
+
     <main style="margin: 1em;">
       <h3>My URLs</h3>
       <table class="table">
@@ -14,6 +16,8 @@
           <tr>
             <th scope="col">Short URL ID</th>
             <th scope="col">Long URL</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -21,6 +25,14 @@
             <tr>
               <td><%= id %></td>
               <td><%= urls[id] %></td>
+              <td>
+                <a href="/urls/<%= id %>/edit">Edit</a>
+              </td>
+              <td>
+                <form method="POST" action="/urls/<%= id %>/delete">
+                  <button type="submit">Delete</button>
+                </form>
+              </td>
             </tr>
           <% } %>
         </tbody>
@@ -29,4 +41,3 @@
     <!-- Bootstrap JS and other scripts -->
   </body>
 </html>
-
